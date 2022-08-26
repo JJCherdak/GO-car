@@ -3,70 +3,66 @@ package com.geekbrains.go_car
 import android.view.animation.LinearInterpolator
 import android.view.animation.OvershootInterpolator
 import com.geekbrains.go_car.databinding.FragmentMainBinding
-import java.util.zip.GZIPOutputStream
+import kotlin.system.exitProcess
 
 class Presenter (private val binding: FragmentMainBinding) {
     fun pressUp() {
-        binding.up.setOnClickListener {
-            rotation(Go.UP)
-            binding.car.animate()
-                .translationYBy(-MOVE_DISTANCE)
-                .setDuration(MOVE_DURATION)
-                .setInterpolator(LinearInterpolator())
-                .start()
-        }
+        rotation(Go.UP)
+        binding.pacman.animate()
+            .translationYBy(-MOVE_DISTANCE)
+            .setDuration(MOVE_DURATION)
+            .setInterpolator(LinearInterpolator())
+            .start()
     }
 
     fun pressLeft() {
-        binding.left.setOnClickListener {
-            rotation(Go.LEFT)
-            binding.car.animate()
-                .translationXBy(-MOVE_DISTANCE)
-                .setDuration(MOVE_DURATION)
-                .setInterpolator(LinearInterpolator())
-                .start()
-        }
+        rotation(Go.LEFT)
+        binding.pacman.animate()
+            .translationXBy(-MOVE_DISTANCE)
+            .setDuration(MOVE_DURATION)
+            .setInterpolator(LinearInterpolator())
+            .start()
     }
 
     fun pressDown() {
-        binding.down.setOnClickListener {
-            rotation(Go.DOWN)
-            binding.car.animate()
-                .translationXBy(MOVE_DISTANCE)
-                .setDuration(MOVE_DURATION)
-                .setInterpolator(LinearInterpolator())
-                .start()
-        }
+        rotation(Go.DOWN)
+        binding.pacman.animate()
+            .translationYBy(MOVE_DISTANCE)
+            .setDuration(MOVE_DURATION)
+            .setInterpolator(LinearInterpolator())
+            .start()
     }
 
     fun pressRight() {
-        binding.right.setOnClickListener {
-            rotation(Go.RIGHT)
-            binding.car.animate()
-                .translationXBy(MOVE_DISTANCE)
-                .setDuration(MOVE_DURATION)
-                .setInterpolator(LinearInterpolator())
-                .start()
-        }
+        rotation(Go.RIGHT)
+        binding.pacman.animate()
+            .translationXBy(MOVE_DISTANCE)
+            .setDuration(MOVE_DURATION)
+            .setInterpolator(LinearInterpolator())
+            .start()
     }
 
-    private fun rotation(way: Go) {
-        binding.Go.animate()
+    private fun rotation(go: Go) {
+        binding.pacman.animate()
             .rotation(
-                when (way) {
-                    Go.UP -> 180f
-                    Go.LEFT -> 90f
-                    Go.DOWN -> 0f
-                    Go.RIGHT -> 270f
+                when (go) {
+                    Go.UP -> 270f
+                    Go.LEFT -> 180f
+                    Go.DOWN -> 90f
+                    Go.RIGHT -> 0f
                 }
             )
-            .setDuration(500)
+            .setDuration(10)
             .setInterpolator(OvershootInterpolator())
             .start()
     }
 
+    fun exit() {
+        exitProcess(0)
+    }
+
     companion object {
         const val MOVE_DURATION = 1000L
-        const val MOVE_DISTANCE = 200f
+        const val MOVE_DISTANCE = 300f
     }
 }

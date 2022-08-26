@@ -2,14 +2,90 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
     tools:context=".MainFragment">
 
+    <ImageView
+        android:id="@+id/pacman"
+        android:layout_width="@dimen/width_pacman"
+        android:layout_height="@dimen/height_pacman"
+        android:layout_gravity="center"
+        android:contentDescription="@string/car"
+        android:src="@drawable/pacman" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        app:layout_constraintBottom_toBottomOf="@+id/up"
+        app:layout_constraintEnd_toEndOf="@+id/up"
+        app:layout_constraintStart_toEndOf="@+id/up"
+        app:layout_constraintTop_toBottomOf="@+id/up">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_fragment" />
+        <ImageButton
+            android:id="@+id/up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/control"
+            android:src="@drawable/ic_baseline_arrow_up"
+            app:layout_constraintBottom_toTopOf="@id/right"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/control"
+            android:src="@drawable/ic_baseline_arrow_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/up" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|bottom"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        app:layout_constraintEnd_toEndOf="@+id/left"
+        app:layout_constraintStart_toEndOf="@+id/left">
+
+        <ImageButton
+            android:id="@+id/down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/control"
+            android:src="@drawable/ic_baseline_arrow_down"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/left"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/control"
+            android:src="@drawable/ic_baseline_arrow_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/exit"
+        android:background="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/control"
+        android:src="@drawable/ic_baseline_close"
+        app:layout_constraintBottom_toTopOf="@id/right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/up"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </FrameLayout>

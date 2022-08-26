@@ -1,4 +1,6 @@
 <resources>
-    <string name="app_name">GO-car</string>
+    <string name="app_name">PAC-MAN</string>
     <string name="hello_fragment">hello fragment</string>
+    <string name="car">car</string>
+    <string name="control">control</string>
 </resources>
